@@ -1,5 +1,8 @@
-package com.gutkoski.trustscore.entities.review;
+package com.gutkoski.trustscore.service;
 
+import com.gutkoski.trustscore.entity.Review;
+import com.gutkoski.trustscore.repository.ReviewRepository;
+import com.gutkoski.trustscore.service.interfaces.ReviewService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,5 +1,7 @@
-package com.gutkoski.trustscore.entities.review;
+package com.gutkoski.trustscore.controller;
 
+import com.gutkoski.trustscore.entity.Review;
+import com.gutkoski.trustscore.service.interfaces.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

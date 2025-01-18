@@ -1,7 +1,7 @@
-package com.gutkoski.trustscore.entities.user;
+package com.gutkoski.trustscore.service.interfaces;
 
-import com.gutkoski.trustscore.entities.user.dto.UserRequestDTO;
-import com.gutkoski.trustscore.entities.user.dto.UserResponseDTO;
+import com.gutkoski.trustscore.dto.UserRequestDTO;
+import com.gutkoski.trustscore.dto.UserResponseDTO;
 
 import java.util.List;
 

@@ -1,5 +1,8 @@
-package com.gutkoski.trustscore.entities.product;
+package com.gutkoski.trustscore.service;
 
+import com.gutkoski.trustscore.entity.Product;
+import com.gutkoski.trustscore.repository.ProductRepository;
+import com.gutkoski.trustscore.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

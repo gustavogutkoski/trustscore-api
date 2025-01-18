@@ -1,8 +1,11 @@
-package com.gutkoski.trustscore.entities.user;
+package com.gutkoski.trustscore.service;
 
-import com.gutkoski.trustscore.entities.user.dto.UserRequestDTO;
-import com.gutkoski.trustscore.entities.user.dto.UserResponseDTO;
-import com.gutkoski.trustscore.entities.user.mapper.UserMapper;
+import com.gutkoski.trustscore.dto.UserRequestDTO;
+import com.gutkoski.trustscore.dto.UserResponseDTO;
+import com.gutkoski.trustscore.entity.User;
+import com.gutkoski.trustscore.mapper.UserMapper;
+import com.gutkoski.trustscore.repository.UserRepository;
+import com.gutkoski.trustscore.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

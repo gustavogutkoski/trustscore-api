@@ -1,8 +1,8 @@
-package com.gutkoski.trustscore.entities.user.mapper;
+package com.gutkoski.trustscore.mapper;
 
-import com.gutkoski.trustscore.entities.user.User;
-import com.gutkoski.trustscore.entities.user.dto.UserRequestDTO;
-import com.gutkoski.trustscore.entities.user.dto.UserResponseDTO;
+import com.gutkoski.trustscore.entity.User;
+import com.gutkoski.trustscore.dto.UserRequestDTO;
+import com.gutkoski.trustscore.dto.UserResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

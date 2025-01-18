@@ -1,4 +1,4 @@
-package com.gutkoski.trustscore.entities.user.dto;
+package com.gutkoski.trustscore.dto;
 
 public record UserRequestDTO(String name,
                              String email) {

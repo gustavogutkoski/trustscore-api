@@ -1,4 +1,6 @@
-package com.gutkoski.trustscore.entities.product;
+package com.gutkoski.trustscore.service.interfaces;
+
+import com.gutkoski.trustscore.entity.Product;
 
 import java.util.List;
 

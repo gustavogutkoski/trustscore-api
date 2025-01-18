@@ -1,7 +1,8 @@
-package com.gutkoski.trustscore.entities.user;
+package com.gutkoski.trustscore.controller;
 
-import com.gutkoski.trustscore.entities.user.dto.UserRequestDTO;
-import com.gutkoski.trustscore.entities.user.dto.UserResponseDTO;
+import com.gutkoski.trustscore.dto.UserRequestDTO;
+import com.gutkoski.trustscore.dto.UserResponseDTO;
+import com.gutkoski.trustscore.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
