@@ -1,13 +1,14 @@
 package com.gutkoski.trustscore.service.interfaces;
 
-import com.gutkoski.trustscore.entity.Product;
+import com.gutkoski.trustscore.dto.ProductRequestDTO;
+import com.gutkoski.trustscore.dto.ProductResponseDTO;
 
 import java.util.List;
 
 public interface ProductService {
-    Product createProduct(Product product);
-    Product getProductById(Long id);
-    List<Product> getAllProducts();
-    Product updateProduct(Long id, Product product);
+    ProductResponseDTO createProduct(ProductRequestDTO productRequestDTO);
+    ProductResponseDTO getProductById(Long id);
+    List<ProductResponseDTO> getAllProducts();
+    ProductResponseDTO updateProduct(Long id, ProductRequestDTO productRequestDTO);
     void deleteProduct(Long id);
 }

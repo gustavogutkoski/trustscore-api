@@ -1,6 +1,7 @@
 package com.gutkoski.trustscore.controller;
 
-import com.gutkoski.trustscore.entity.Product;
+import com.gutkoski.trustscore.dto.ProductRequestDTO;
+import com.gutkoski.trustscore.dto.ProductResponseDTO;
 import com.gutkoski.trustscore.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,29 +29,35 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Product createdProduct = productService.createProduct(product);
-        return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestDTO productRequestDTO) {
+        return new ResponseEntity<>(
+                productService.createProduct(productRequestDTO),
+                HttpStatus.CREATED
+        );
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        Product product = productService.getProductById(id);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                productService.getProductById(id)
+        );
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
-        return ResponseEntity.ok(productService.getAllProducts());
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
+        return ResponseEntity.ok(
+                productService.getAllProducts()
+        );
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(
+    public ResponseEntity<ProductResponseDTO> updateProduct(
             @PathVariable Long id,
-            @RequestBody Product updatedProduct
+            @RequestBody ProductRequestDTO productRequestDTO
     ) {
-        Product product = productService.updateProduct(id, updatedProduct);
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(
+                productService.updateProduct(id, productRequestDTO)
+        );
     }
 
     @DeleteMapping("/{id}")

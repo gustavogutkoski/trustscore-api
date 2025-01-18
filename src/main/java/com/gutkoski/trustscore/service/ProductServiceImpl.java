@@ -1,45 +1,62 @@
 package com.gutkoski.trustscore.service;
 
+import com.gutkoski.trustscore.dto.ProductRequestDTO;
+import com.gutkoski.trustscore.dto.ProductResponseDTO;
 import com.gutkoski.trustscore.entity.Product;
+import com.gutkoski.trustscore.mapper.ProductMapper;
 import com.gutkoski.trustscore.repository.ProductRepository;
 import com.gutkoski.trustscore.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository,
+                              ProductMapper productMapper) {
         this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
     @Override
-    public Product createProduct(Product product) {
-        return productRepository.save(product);
+    public ProductResponseDTO createProduct(ProductRequestDTO productRequestDTO) {
+        Product savedProduct = productRepository.save(
+                productMapper.toEntity(productRequestDTO)
+        );
+        return productMapper.toDTO(savedProduct);
     }
 
     @Override
-    public Product getProductById(Long id) {
-        return productRepository.findById(id)
+    public ProductResponseDTO getProductById(Long id) {
+        Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
+        return productMapper.toDTO(existingProduct);
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductResponseDTO> getAllProducts() {
+        return productRepository.findAll()
+                .stream()
+                .map(productMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Product updateProduct(Long id, Product updatedProduct) {
-        Product existingProduct = getProductById(id);
-        existingProduct.setName(updatedProduct.getName());
-        existingProduct.setDescription(updatedProduct.getDescription());
-        return productRepository.save(existingProduct);
+    public ProductResponseDTO updateProduct(Long id, ProductRequestDTO updatedProduct) {
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
+        existingProduct.setName(updatedProduct.name());
+        existingProduct.setDescription(updatedProduct.description());
+        return productMapper.toDTO(
+                productRepository.save(existingProduct)
+        );
     }
 
     @Override
