@@ -1,13 +1,14 @@
 package com.gutkoski.trustscore.service.interfaces;
 
-import com.gutkoski.trustscore.entity.Review;
+import com.gutkoski.trustscore.dto.ReviewRequestDTO;
+import com.gutkoski.trustscore.dto.ReviewResponseDTO;
 
 import java.util.List;
 
 public interface ReviewService {
-    Review createReview(Review review);
-    Review getReviewById(Long id);
-    List<Review> getAllReviews();
-    Review updateReview(Long id, Review review);
+    ReviewResponseDTO createReview(ReviewRequestDTO reviewRequestDTO);
+    ReviewResponseDTO getReviewById(Long id);
+    List<ReviewResponseDTO> getAllReviews();
+    ReviewResponseDTO updateReview(Long id, ReviewRequestDTO reviewRequestDTO);
     void deleteReview(Long id);
 }
