@@ -12,8 +12,8 @@ public interface ReviewMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    @Mapping(source = "user", target = "user")
-    @Mapping(source = "product", target = "product")
+    @Mapping(source = "user", target = "userResponseDTO")
+    @Mapping(source = "product", target = "productResponseDTO")
     ReviewResponseDTO toDTO(Review review);
 
     @Mapping(source = "userId", target = "user.id")
