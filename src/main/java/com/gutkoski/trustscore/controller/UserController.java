@@ -1,5 +1,8 @@
-package com.gutkoski.trustscore.entities.user;
+package com.gutkoski.trustscore.controller;
 
+import com.gutkoski.trustscore.dto.UserRequestDTO;
+import com.gutkoski.trustscore.dto.UserResponseDTO;
+import com.gutkoski.trustscore.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,29 +29,29 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
+    public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO createdUser = userService.createUser(userRequestDTO);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
+        UserResponseDTO userResponseDTO = userService.getUserById(id);
+        return ResponseEntity.ok(userResponseDTO);
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(
+    public ResponseEntity<UserResponseDTO> updateUser(
             @PathVariable Long id,
-            @RequestBody User updatedUser
+            @RequestBody UserRequestDTO updatedUser
     ) {
-        User user = userService.updateUser(id, updatedUser);
-        return ResponseEntity.ok(user);
+        UserResponseDTO userResponseDTO = userService.updateUser(id, updatedUser);
+        return ResponseEntity.ok(userResponseDTO);
     }
 
     @DeleteMapping("/{id}")

@@ -1,5 +1,6 @@
-package com.gutkoski.trustscore.entities.product;
+package com.gutkoski.trustscore.repository;
 
+import com.gutkoski.trustscore.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

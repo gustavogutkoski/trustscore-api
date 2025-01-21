@@ -1,7 +1,5 @@
-package com.gutkoski.trustscore.entities.review;
+package com.gutkoski.trustscore.entity;
 
-import com.gutkoski.trustscore.entities.product.Product;
-import com.gutkoski.trustscore.entities.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,5 +1,9 @@
-package com.gutkoski.trustscore.entities.review;
+package com.gutkoski.trustscore.controller;
 
+import com.gutkoski.trustscore.dto.ReviewRequestDTO;
+import com.gutkoski.trustscore.dto.ReviewResponseDTO;
+import com.gutkoski.trustscore.entity.Review;
+import com.gutkoski.trustscore.service.interfaces.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,29 +29,32 @@ public class ReviewController {
     }
 
     @PostMapping
-    public ResponseEntity<Review> createReview(@RequestBody Review review) {
-        Review createdReview = reviewService.createReview(review);
-        return new ResponseEntity<>(createdReview, HttpStatus.CREATED);
+    public ResponseEntity<ReviewResponseDTO> createReview(@RequestBody ReviewRequestDTO reviewRequestDTO) {
+        ReviewResponseDTO createdReview = reviewService.createReview(reviewRequestDTO);
+        return new ResponseEntity<>(
+                createdReview,
+                HttpStatus.CREATED
+        );
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Review> getReviewById(@PathVariable Long id) {
-        Review review = reviewService.getReviewById(id);
+    public ResponseEntity<ReviewResponseDTO> getReviewById(@PathVariable Long id) {
+        ReviewResponseDTO review = reviewService.getReviewById(id);
         return ResponseEntity.ok(review);
     }
 
     @GetMapping
-    public ResponseEntity<List<Review>> getAllReviews() {
+    public ResponseEntity<List<ReviewResponseDTO>> getAllReviews() {
         return ResponseEntity.ok(reviewService.getAllReviews());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Review> updateReview(
+    public ResponseEntity<ReviewResponseDTO> updateReview(
             @PathVariable Long id,
-            @RequestBody Review updatedReview
+            @RequestBody ReviewRequestDTO updatedReview
     ) {
-        Review review = reviewService.updateReview(id, updatedReview);
-        return ResponseEntity.ok(review);
+        ReviewResponseDTO reviewResponseDTO = reviewService.updateReview(id, updatedReview);
+        return ResponseEntity.ok(reviewResponseDTO);
     }
 
     @DeleteMapping("/{id}")

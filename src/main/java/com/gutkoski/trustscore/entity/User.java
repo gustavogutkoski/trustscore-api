@@ -1,5 +1,4 @@
-package com.gutkoski.trustscore.entities.product;
-
+package com.gutkoski.trustscore.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,9 +17,10 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    private String description;
+    @Column(nullable = false)
+    private String email;
 
-    public Product() {
+    public User() {
     }
 
     public Long getId() {
@@ -35,11 +35,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
