@@ -20,7 +20,7 @@ public class Review {
 
     private String comment;
 
-    private LocalDateTime date;
+    private LocalDateTime createdAt;
 
     @ManyToOne
     private Product product;
@@ -51,12 +51,12 @@ public class Review {
         this.comment = comment;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Product getProduct() {
