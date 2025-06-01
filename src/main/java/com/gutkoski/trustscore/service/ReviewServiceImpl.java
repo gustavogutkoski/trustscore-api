@@ -5,14 +5,11 @@ import com.gutkoski.trustscore.dto.ReviewResponseDTO;
 import com.gutkoski.trustscore.entity.Product;
 import com.gutkoski.trustscore.entity.Review;
 import com.gutkoski.trustscore.entity.User;
-import com.gutkoski.trustscore.entity.filter.ReviewFilter;
-import com.gutkoski.trustscore.entity.spec.ReviewSpecBuilder;
 import com.gutkoski.trustscore.mapper.ReviewMapper;
 import com.gutkoski.trustscore.repository.ProductRepository;
 import com.gutkoski.trustscore.repository.ReviewRepository;
 import com.gutkoski.trustscore.repository.UserRepository;
 import com.gutkoski.trustscore.service.interfaces.ReviewService;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -81,9 +78,5 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void deleteReview(Long id) {
         reviewRepository.deleteById(id);
-    }
-
-    public List<Review> searchReviews(ReviewFilter filter) {
-        return reviewRepository.findAll((Sort) ReviewSpecBuilder.build(filter));
     }
 }
