@@ -28,7 +28,7 @@ public class GenericSpecBuilder<T, F> {
      * Constructs a new {@code GenericSpecBuilder} instance.
      *
      * @param filter the filter DTO containing the query parameters
-     * @param filterSpecFunction a function that converts the filter into an array of {@link Predicate}s
+     * @param filterSpecFunction a function that converts the filter into an array of {@link jakarta.persistence.criteria.Predicate}
      */
     public GenericSpecBuilder(F filter, FilterSpecificationFunction<F, T> filterSpecFunction) {
         this.filter = filter;
