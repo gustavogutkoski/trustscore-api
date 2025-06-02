@@ -40,6 +40,9 @@ jobs:
       - name: Check code format with Spotless
         run: mvn spotless:check
 
+      - name: Check code style with Checkstyle
+        run: mvn checkstyle:check
+
       - name: Run Tests
         run: mvn test --no-transfer-progress
 
