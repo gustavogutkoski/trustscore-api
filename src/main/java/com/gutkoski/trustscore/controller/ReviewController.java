@@ -3,19 +3,15 @@ package com.gutkoski.trustscore.controller;
 import com.gutkoski.trustscore.dto.ReviewRequestDTO;
 import com.gutkoski.trustscore.dto.ReviewResponseDTO;
 import com.gutkoski.trustscore.entity.Review;
+import com.gutkoski.trustscore.entity.filter.ReviewFilterDTO;
 import com.gutkoski.trustscore.service.interfaces.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -61,5 +57,17 @@ public class ReviewController {
     public ResponseEntity<Void> deleteReview(@PathVariable Long id) {
         reviewService.deleteReview(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/reviews")
+    public ResponseEntity<List<ReviewResponseDTO>> getFilteredReviews(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Integer rating,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate createdAfter,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate createdBefore
+    ) {
+        ReviewFilterDTO filter = new ReviewFilterDTO(title, rating, createdAfter, createdBefore);
+        List<ReviewResponseDTO> reviews = reviewService.filterReviews(filter);
+        return ResponseEntity.ok(reviews);
     }
 }
