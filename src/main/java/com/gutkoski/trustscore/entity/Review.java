@@ -6,72 +6,68 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reviews")
 public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Integer rating;
+  private Integer rating;
 
-    private String comment;
+  private String comment;
 
-    private LocalDateTime createdAt;
+  private LocalDateTime createdAt;
 
-    @ManyToOne
-    private Product product;
+  @ManyToOne private Product product;
 
-    @ManyToOne
-    private User user;
+  @ManyToOne private User user;
 
-    public Review() {
-    }
+  public Review() {}
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public int getRating() {
-        return rating;
-    }
+  public int getRating() {
+    return rating;
+  }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
+  public void setRating(int rating) {
+    this.rating = rating;
+  }
 
-    public String getComment() {
-        return comment;
-    }
+  public String getComment() {
+    return comment;
+  }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
 
-    public Product getProduct() {
-        return product;
-    }
+  public Product getProduct() {
+    return product;
+  }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+  public void setProduct(Product product) {
+    this.product = product;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setUser(User user) {
+    this.user = user;
+  }
 }

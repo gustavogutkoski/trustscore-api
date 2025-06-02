@@ -9,9 +9,9 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
 
-    UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
+  UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    ProductResponseDTO toDTO(Product product);
+  ProductResponseDTO toDTO(Product product);
 
-    Product toEntity(ProductRequestDTO productRequestDTO);
+  Product toEntity(ProductRequestDTO productRequestDTO);
 }

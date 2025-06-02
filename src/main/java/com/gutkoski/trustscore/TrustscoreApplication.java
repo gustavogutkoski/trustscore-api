@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TrustscoreApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TrustscoreApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(TrustscoreApplication.class, args);
+  }
 }
