@@ -1,4 +1,3 @@
-version: "3.8"
 
 services:
   db:
@@ -19,12 +18,35 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_PROFILES_ACTIVE: dev
+      SPRING_PROFILES_ACTIVE: docker
     networks:
       - trustscore-net
 
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - trustscore-net
+    depends_on:
+      - app
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - trustscore-net
+    depends_on:
+      - prometheus
+
 volumes:
   pgdata:
+  grafana-data:
 
 networks:
   trustscore-net:
